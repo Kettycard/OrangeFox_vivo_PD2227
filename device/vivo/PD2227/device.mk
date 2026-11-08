@@ -1,11 +1,12 @@
 #
 # Copyright (C) 2026 The Android Open Source Project
-# Copyright (C) 2026 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2026 The OrangeFox Recovery Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 LOCAL_PATH := device/vivo/PD2227
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -16,16 +17,8 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service
-
-PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-service \
     bootctrl.kalama
-
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.kalama \
-    libgptutils \
-    libz \
-    libcutils
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
