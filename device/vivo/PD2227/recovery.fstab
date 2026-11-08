@@ -1,0 +1,25 @@
+# Android fstab file for vivo X90 Pro+ (PD2227)
+# Dynamic Partitions (Super)
+/system         erofs   system                                          flags=display="System";logical;slotselect
+/system_ext     erofs   system_ext                                      flags=display="System_ext";logical;slotselect
+/product        erofs   product                                         flags=display="Product";logical;slotselect
+/vendor         erofs   vendor                                          flags=display="Vendor";logical;slotselect
+/vendor_dlkm    erofs   vendor_dlkm                                     flags=display="Vendor DLKM";logical;slotselect
+/odm            erofs   odm                                             flags=display="Odm";logical;slotselect
+
+# Core / Physical Partitions
+/boot           emmc    /dev/block/by-name/boot                         flags=display="Boot";backup=1;flashimg=1;slotselect
+/init_boot      emmc    /dev/block/by-name/init_boot                    flags=display="Init Boot";backup=1;flashimg=1;slotselect
+/vendor_boot    emmc    /dev/block/by-name/vendor_boot                  flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
+/dtbo           emmc    /dev/block/by-name/dtbo                         flags=display="DTBO";backup=1;flashimg=1;slotselect
+/recovery       emmc    /dev/block/by-name/recovery                     flags=display="Recovery";backup=1;flashimg=1;slotselect
+/vbmeta         emmc    /dev/block/by-name/vbmeta                       flags=display="VBMeta";backup=1;flashimg=1;slotselect
+/vbmeta_system  emmc    /dev/block/by-name/vbmeta_system                flags=display="VBMeta System";backup=1;flashimg=1;slotselect
+
+# Storage / Data
+/metadata       f2fs    /dev/block/by-name/metadata                     flags=display="Metadata"
+/data           f2fs    /dev/block/bootdevice/by-name/userdata          flags=display="Data";fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,metadata_encryption=aes-256-xts:wrappedkey_v0
+/misc           emmc    /dev/block/bootdevice/by-name/misc              flags=display="Misc"
+
+# Removable Storage
+/usb_otg        auto    /dev/block/sdg1         /dev/block/sdg          flags=display="USB-OTG";storage;wipeingui;removable
