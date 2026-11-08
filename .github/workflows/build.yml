@@ -70,14 +70,16 @@ jobs:
         run: |
           mkdir -p /home/runner/fox/device/vivo/PD2227
           cp -r $GITHUB_WORKSPACE/device/vivo/PD2227/* /home/runner/fox/device/vivo/PD2227/
-          # Ensure unix line endings across all device tree files
           find /home/runner/fox/device/vivo/PD2227 -type f -exec dos2unix {} + || true
           ls -la /home/runner/fox/device/vivo/PD2227/
 
       - name: Build OrangeFox Recovery
         run: |
+          set -x
           cd /home/runner/fox
+          set +e
           source build/envsetup.sh
+          set -e
           export ALLOW_MISSING_DEPENDENCIES=true
           export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
           export LC_ALL="C"
