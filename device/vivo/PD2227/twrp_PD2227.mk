@@ -7,13 +7,13 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit common TWRP / OrangeFox stuff
-$(call inherit-product, vendor/twrp/config/common.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from PD2227 device
 $(call inherit-product, device/vivo/PD2227/device.mk)
+
+# Inherit common TWRP / OrangeFox stuff
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_DEVICE := PD2227
 PRODUCT_NAME := twrp_PD2227
